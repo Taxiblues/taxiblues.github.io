@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passengers - Scarica l'app</title>
+  <meta name="description" content="Scarica Passengers, l'app che fa incontrare bikers e passeggeri per vivere giri in moto, nuove emozioni e momenti autentici da condividere." />
+
+  <!-- Open Graph / anteprima social -->
+  <meta property="og:title" content="Passengers - La tua prossima avventura inizia da qui" />
+  <meta property="og:description" content="Che tu sia biker o passeggero, trova il tuo compagno di viaggio e vivi nuove avventure in moto." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --orange: #ff7a18;
+      --orange-dark: #d95d00;
+      --black: #151515;
+      --dark: #222222;
+      --light: #fff7ef;
+      --white: #ffffff;
+      --muted: #666666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 122, 24, 0.28), transparent 32%),
+        linear-gradient(135deg, #151515 0%, #2a2a2a 55%, #111111 100%);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero {
+      padding: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 122, 24, 0.14);
+      color: #ffb066;
+      border: 1px solid rgba(255, 122, 24, 0.45);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: var(--orange);
+    }
+
+    .intro {
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+      color: #f3f3f3;
+      margin-bottom: 28px;
+      max-width: 650px;
+    }
+
+    .claim {
+      font-size: 16px;
+      line-height: 1.55;
+      color: #dcdcdc;
+      margin-bottom: 34px;
+      max-width: 620px;
+    }
+
+    .download-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    .download-box h2 {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .download-box p {
+      color: #dddddd;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .store-button {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      text-decoration: none;
+      color: var(--white);
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      padding: 14px 18px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .store-button:hover {
+      transform: translateY(-2px);
+      border-color: var(--orange);
+      box-shadow: 0 14px 28px rgba(255, 122, 24, 0.16);
+    }
+
+    .store-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .store-icon svg {
+      width: 34px;
+      height: 34px;
+      display: block;
+    }
+
+    .store-text small {
+      display: block;
+      font-size: 12px;
+      color: #cfcfcf;
+      margin-bottom: 2px;
+    }
+
+    .store-text strong {
+      display: block;
+      font-size: 21px;
+      line-height: 1.1;
+    }
+
+    .phone-card {
+      min-height: 520px;
+      border-radius: 36px;
+      background:
+        linear-gradient(160deg, rgba(255, 122, 24, 0.95), rgba(217, 93, 0, 0.95)),
+        linear-gradient(#ffffff, #ffffff);
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-card::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+      top: -80px;
+      right: -90px;
+    }
+
+    .phone-card::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: rgba(0, 0, 0, 0.12);
+      border-radius: 50%;
+      bottom: -70px;
+      left: -80px;
+    }
+
+    .app-preview {
+      position: relative;
+      z-index: 1;
+      background: #111111;
+      width: 260px;
+      min-height: 420px;
+      border-radius: 34px;
+      padding: 18px;
+      border: 8px solid #2b2b2b;
+      box-shadow: 0 26px 55px rgba(0, 0, 0, 0.45);
+    }
+
+    .speaker {
+      width: 72px;
+      height: 6px;
+      border-radius: 999px;
+      background: #444444;
+      margin: 0 auto 20px;
+    }
+
+    .app-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .ride-card {
+      background: #ffffff;
+      color: #1d1d1d;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .ride-card .pill {
+      display: inline-block;
+      background: #fff0e2;
+      color: var(--orange-dark);
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .ride-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .ride-card p {
+      font-size: 13px;
+      color: #555555;
+      line-height: 1.4;
+    }
+
+    .cta-mini {
+      margin-top: 18px;
+      background: var(--orange);
+      color: #111111;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 30px;
+      color: #bdbdbd;
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      body {
+        align-items: flex-start;
+      }
+
+      .page {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero {
+        padding: 0;
+      }
+
+      .phone-card {
+        min-height: auto;
+        padding: 26px;
+      }
+
+      .app-preview {
+        width: 100%;
+        max-width: 300px;
+        min-height: 390px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-label="Benvenuto su Passengers">
+      <div class="badge">Passengers App</div>
+      <h1>La tua prossima <span>avventura</span> inizia da qui.</h1>
+      <p class="intro">
+        Benvenuto in Passengers, l'app pensata per far incontrare bikers e passeggeri che vogliono condividere giri in moto, nuove emozioni e momenti autentici.
+      </p>
+      <p class="claim">
+        Che tu sia biker o passeggero, entra nella community, trova il tuo compagno di viaggio e parti per il prossimo giro.
+      </p>
+
+      <div class="download-box">
+        <h2>Scarica Passengers</h2>
+        <p>Scegli il tuo store e installa subito l'app sul tuo smartphone.</p>
+
+        <div class="store-buttons">
+         
+          <a class="store-button" href="https://www.youtube.com/@Passengers-y6l" target="_blank" rel="noopener noreferrer" aria-label="Visita il canale YouTube di Passengers">
+            <span class="store-icon" aria-hidden="true">
+              <svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ff0000" d="M549.7 124.1c-6.3-23.7-24.8-42.2-48.5-48.5C458.7 64 288 64 288 64S117.3 64 74.8 75.6c-23.7 6.3-42.2 24.8-48.5 48.5C14.7 166.7 14.7 256 14.7 256s0 89.3 11.6 131.9c6.3 23.7 24.8 42.2 48.5 48.5C117.3 448 288 448 288 448s170.7 0 213.2-11.6c23.7-6.3 42.2-24.8 48.5-48.5C561.3 345.3 561.3 256 561.3 256s0-89.3-11.6-131.9zM232 338.2V173.8L361.8 256 232 338.2z"/>
+              </svg>
+            </span>
+            <span class="store-text">
+              <small>Seguici su</small>
+              <strong>YouTube</strong>
+            </span>
+          </a>
+
+          <a class="store-button" href="https://www.facebook.com/profile.php?id=61590256671175" target="_blank" rel="noopener noreferrer" aria-label="Visita la pagina Facebook di Passengers">
+            <span class="store-icon" aria-hidden="true">
+              <svg viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#1877f2" d="M279.1 288l14.2-92.7h-88.9v-60.1c0-25.4 12.4-50.1 52.2-50.1H297V6.3S260.4 0 225.4 0C152.1 0 104.3 44.4 104.3 124.7v70.6H22.9V288h81.4v224h100.2V288h74.6z"/>
+              </svg>
+            </span>
+            <span class="store-text">
+              <small>Seguici su</small>
+              <strong>Facebook</strong>
+            </span>
+          </a>
+
+          <a class="store-button" href="https://www.instagram.com/passengers.app/" target="_blank" rel="noopener noreferrer" aria-label="Visita il profilo Instagram di Passengers">
+            <span class="store-icon" aria-hidden="true">
+              <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#feda75"/>
+                    <stop offset="35%" stop-color="#fa7e1e"/>
+                    <stop offset="60%" stop-color="#d62976"/>
+                    <stop offset="80%" stop-color="#962fbf"/>
+                    <stop offset="100%" stop-color="#4f5bd5"/>
+                  </linearGradient>
+                </defs>
+                <path fill="url(#instagram-gradient)" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1S3.3 127.6 1.5 163.5c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.9zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+              </svg>
+            </span>
+            <span class="store-text">
+              <small>Seguici su</small>
+              <strong>Instagram</strong>
+            </span>
+          </a>
+
+          <a class="store-button" href="https://www.tiktok.com/@passengers.app?_r=1&_t=ZN-96bJdXReQo2" target="_blank" rel="noopener noreferrer" aria-label="Visita il profilo TikTok di Passengers">
+            <span class="store-icon" aria-hidden="true">
+              <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffffff" d="M448 209.9c-44.6.1-87-14.1-122.3-40.4v178.7c0 88.7-71.9 160.6-160.6 160.6S4.5 436.9 4.5 348.2 76.4 187.6 165.1 187.6c13.4 0 26.4 1.6 38.8 4.7v88.2c-11.6-7.2-25.3-11.4-39.9-11.4-41.9 0-75.8 33.9-75.8 75.8s33.9 75.8 75.8 75.8 75.8-33.9 75.8-75.8V0h85.9c7.9 75.1 68.1 134.9 122.3 141.1v68.8z"/>
+              </svg>
+            </span>
+            <span class="store-text">
+              <small>Seguici su</small>
+              <strong>TikTok</strong>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <footer>
+        © Passengers.app - Bikers e passeggeri, insieme sulla strada.
+      </footer>
+    </section>
+
+    <section class="phone-card" aria-label="Anteprima app Passengers">
+      <div class="app-preview">
+        <div class="speaker"></div>
+        <div class="app-title">Passengers</div>
+
+        <div class="ride-card">
+          <span class="pill">Nuovo giro</span>
+          <h3>Trova il tuo partner di viaggio</h3>
+          <p>Scopri bikers e passeggeri pronti a condividere esperienze in moto.</p>
+        </div>
+
+        <div class="ride-card">
+          <span class="pill">Community</span>
+          <h3>Vivi la strada insieme</h3>
+          <p>Proponi un giro, partecipa e organizza nuove avventure.</p>
+        </div>
+
+        <div class="cta-mini">Scarica ora</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
