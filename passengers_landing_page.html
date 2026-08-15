@@ -157,6 +157,60 @@
     .store-text small { display:block; color:#b9b9b6; font-size:11px; margin-bottom:2px; }
     .store-text strong { display:block; font-size:18px; line-height:1.05; }
 
+
+    .qr-grid {
+      display:grid;
+      grid-template-columns:repeat(2, minmax(170px, 210px));
+      gap:16px;
+      margin-top:18px;
+      align-items:stretch;
+    }
+    .qr-card {
+      display:block;
+      text-decoration:none;
+      padding:16px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.13);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 16px 40px rgba(0,0,0,.22);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      text-align:center;
+    }
+    .qr-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,107,0,.55);
+      background: rgba(255,107,0,.08);
+    }
+    .qr-card img {
+      width: 136px;
+      height: 136px;
+      margin: 0 auto 12px;
+      padding: 8px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+    }
+    .qr-card strong {
+      display:block;
+      font-size:16px;
+      margin-bottom:5px;
+    }
+    .qr-card p {
+      margin:0;
+      color:#b9b9b6;
+      font-size:13px;
+      line-height:1.45;
+    }
+    .qr-title {
+      margin-top: 18px;
+      color:#d9d9d4;
+      font-size:14px;
+      font-weight:700;
+    }
+    .final-card .qr-grid {
+      margin-top:20px;
+    }
+
     .micro { margin-top: 24px; display:flex; gap:9px; flex-wrap:wrap; color:#a9a9a5; font-size:13px; }
     .micro span { padding:7px 10px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.025); }
 
@@ -317,6 +371,7 @@
       .hero-copy { font-size:17px; }
       .cta-row { display:grid; grid-template-columns:1fr; }
       .store-button { min-width:0; width:100%; }
+      .qr-grid { grid-template-columns:1fr; max-width:320px; }
       .visual { min-height:500px; border-radius:28px; }
       .visual::before { background-position: 54% center; }
       .features { grid-template-columns:1fr; }
@@ -391,6 +446,21 @@
               <span class="store-text"><small>Scarica su</small><strong>App Store</strong></span>
             </a>
           </div>
+
+          <div class="qr-title">Oppure scansiona il QR code dal tuo smartphone</div>
+          <div class="qr-grid reveal" aria-label="QR code per scaricare Passengers">
+            <a class="qr-card" href="https://play.google.com/store/apps/details?id=com.taxiblues.passengers" target="_blank" rel="noopener noreferrer" aria-label="Apri Google Play con QR code">
+              <img src="data:image/png;base64,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" alt="QR code Google Play Passengers" />
+              <strong>Android / Google Play</strong>
+              <p>Scansiona e scarica subito Passengers da Google Play.</p>
+            </a>
+            <a class="qr-card" href="https://apps.apple.com/it/app/passengers/id6755344039" target="_blank" rel="noopener noreferrer" aria-label="Apri App Store con QR code">
+              <img src="data:image/png;base64,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" alt="QR code App Store Passengers" />
+              <strong>iPhone / App Store</strong>
+              <p>Scansiona e scarica subito Passengers da App Store.</p>
+            </a>
+          </div>
+
 
           <div class="micro" aria-label="Caratteristiche principali">
             <span>Bikers</span><span>Passeggeri</span><span>Giri in moto</span><span>Community</span>
@@ -478,6 +548,21 @@
               <span class="store-text"><small>Scarica su</small><strong>App Store</strong></span>
             </a>
           </div>
+
+          <div class="qr-title">Download diretto con QR code</div>
+          <div class="qr-grid" aria-label="QR code finali per scaricare Passengers">
+            <a class="qr-card" href="https://play.google.com/store/apps/details?id=com.taxiblues.passengers" target="_blank" rel="noopener noreferrer" aria-label="Scarica su Google Play con QR code">
+              <img src="data:image/png;base64,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" alt="QR code Google Play Passengers" />
+              <strong>Android / Google Play</strong>
+              <p>Scansiona e apri subito la scheda dell'app su Google Play.</p>
+            </a>
+            <a class="qr-card" href="https://apps.apple.com/it/app/passengers/id6755344039" target="_blank" rel="noopener noreferrer" aria-label="Scarica su App Store con QR code">
+              <img src="data:image/png;base64,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" alt="QR code App Store Passengers" />
+              <strong>iPhone / App Store</strong>
+              <p>Scansiona e apri subito la scheda dell'app su App Store.</p>
+            </a>
+          </div>
+
         </div>
       </div>
     </section>
