@@ -407,6 +407,20 @@
       * { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
       .reveal { opacity:1; transform:none; }
     }
+
+    /* Language switcher — IT / ES */
+    .lang-switch { display:flex; align-items:center; gap:8px; margin-left:auto; }
+    .lang-btn {
+      width:38px; height:32px; display:grid; place-items:center; padding:0; cursor:pointer;
+      border-radius:10px; border:1px solid var(--line); background:rgba(255,255,255,.035);
+      font-size:20px; line-height:1; transition:transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .lang-btn:hover { transform:translateY(-2px); border-color:rgba(255,107,0,.5); }
+    .lang-btn.active { border-color:var(--orange); background:var(--orange-soft); box-shadow:0 0 0 1px rgba(255,107,0,.12) inset; }
+    @media (max-width: 640px) {
+      .lang-switch { gap:6px; }
+      .lang-btn { width:35px; height:30px; font-size:18px; }
+    }
   </style>
 </head>
 <body>
@@ -420,6 +434,10 @@
         <a href="#come-funziona">Come funziona</a>
         <a href="#community">Community</a>
       </nav>
+      <div class="lang-switch" role="group" aria-label="Selezione lingua">
+        <button class="lang-btn active" type="button" data-lang="it" aria-label="Italiano" title="Italiano">🇮🇹</button>
+        <button class="lang-btn" type="button" data-lang="es" aria-label="Español" title="Español">🇪🇸</button>
+      </div>
       
     </div>
   </header>
@@ -597,6 +615,127 @@
       });
     }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+    const translations = {
+      it: {
+        title: "Passengers — La strada è più bella insieme",
+        description: "Scarica Passengers, l'app che fa incontrare bikers e passeggeri per vivere giri in moto, nuove emozioni e momenti autentici da condividere.",
+        navFeatures: "Funzionalità", navHow: "Come funziona", navCommunity: "Community",
+        eyebrow: "La community per chi vive la moto",
+        heroH1: 'Non viaggiare da solo.<span class="orange">Viaggia con Passengers.</span>',
+        heroCopy: "L'app pensata per far incontrare <strong>bikers e passeggeri</strong>, organizzare nuovi giri e condividere emozioni vere sulla strada.",
+        availableOn: "Disponibile su", downloadOn: "Scarica su",
+        qrIntro: "Oppure scansiona il QR code dal tuo smartphone",
+        qrGoogle1: "Scansiona e scarica subito Passengers da Google Play.",
+        qrApple1: "Scansiona e scarica subito Passengers da App Store.",
+        biker: "Bikers", passenger: "Passeggeri", rides: "Giri in moto", community: "Community",
+        roadEyebrow: "PASSENGERS ON THE ROAD", roadTitle: "La strada chiama.<br>La community risponde.",
+        strip1: "Trova nuove persone", strip2: "Organizza i tuoi giri", strip3: "Vivi nuove esperienze", strip4: "Condividi la passione",
+        featuresKicker: "Tutto in un'unica app", featuresTitle: "La moto è più bella quando la condividi.",
+        featuresCopy: "Passengers mette al centro la strada, le persone e la voglia di partire. Un'esperienza semplice per trovare, organizzare e vivere il prossimo giro.",
+        f1t: "Scopri chi c'è intorno a te", f1p: "Trova bikers e passeggeri e trasforma un'idea di giro in una nuova esperienza.",
+        f2t: "Organizza i tuoi giri", f2p: "Crea un nuovo giro, condividi il programma e trova qualcuno con cui partire.",
+        f3t: "Incontra nuove persone", f3p: "Entra nella community e condividi la passione per le due ruote con nuovi compagni di viaggio.",
+        f4t: "Vivi la community", f4p: "Condividi esperienze, scopri nuove occasioni di incontro e resta connesso alla tua passione.",
+        howKicker: "Pronto a partire?", howTitle: "Tre passi. Una nuova strada.",
+        s1t: "Scarica Passengers", s1p: "Installa l'app da App Store o Google Play e accedi alla community.",
+        s2t: "Trova il tuo prossimo giro", s2p: "Scopri persone e occasioni per condividere la tua prossima uscita in moto.",
+        s3t: "Parti e condividi", s3p: "Vivi la strada, crea nuove connessioni e porta con te un nuovo ricordo.",
+        finalTitle: "La tua prossima avventura potrebbe iniziare oggi.",
+        finalCopy: "Che tu sia biker o passeggero, entra nella community, trova il tuo compagno di viaggio e parti per il prossimo giro.",
+        qrFinalTitle: "Download diretto con QR code",
+        qrGoogle2: "Scansiona e apri subito la scheda dell'app su Google Play.",
+        qrApple2: "Scansiona e apri subito la scheda dell'app su App Store.",
+        footer: "© Passengers.app — Bikers e passeggeri, insieme sulla strada.",
+        mobileDownload: "Scarica Passengers"
+      },
+      es: {
+        title: "Passengers — La carretera es mejor juntos",
+        description: "Descarga Passengers, la app que conecta a bikers y pasajeros para disfrutar de rutas en moto, nuevas emociones y momentos auténticos para compartir.",
+        navFeatures: "Funciones", navHow: "Cómo funciona", navCommunity: "Comunidad",
+        eyebrow: "La comunidad para quienes viven la moto",
+        heroH1: 'No viajes solo.<span class="orange">Viaja con Passengers.</span>',
+        heroCopy: "La app pensada para conectar a <strong>bikers y pasajeros</strong>, organizar nuevas rutas y compartir emociones auténticas en la carretera.",
+        availableOn: "Disponible en", downloadOn: "Descárgala en",
+        qrIntro: "O escanea el código QR desde tu smartphone",
+        qrGoogle1: "Escanea y descarga ahora Passengers desde Google Play.",
+        qrApple1: "Escanea y descarga ahora Passengers desde App Store.",
+        biker: "Bikers", passenger: "Pasajeros", rides: "Rutas en moto", community: "Comunidad",
+        roadEyebrow: "PASSENGERS ON THE ROAD", roadTitle: "La carretera llama.<br>La comunidad responde.",
+        strip1: "Conoce gente nueva", strip2: "Organiza tus rutas", strip3: "Vive nuevas experiencias", strip4: "Comparte la pasión",
+        featuresKicker: "Todo en una sola app", featuresTitle: "La moto es mejor cuando la compartes.",
+        featuresCopy: "Passengers pone en el centro la carretera, las personas y las ganas de salir. Una experiencia sencilla para encontrar, organizar y vivir tu próxima ruta.",
+        f1t: "Descubre quién está cerca de ti", f1p: "Encuentra bikers y pasajeros y transforma una idea de ruta en una nueva experiencia.",
+        f2t: "Organiza tus rutas", f2p: "Crea una nueva ruta, comparte el programa y encuentra a alguien con quien salir.",
+        f3t: "Conoce gente nueva", f3p: "Únete a la comunidad y comparte la pasión por las dos ruedas con nuevos compañeros de viaje.",
+        f4t: "Vive la comunidad", f4p: "Comparte experiencias, descubre nuevas oportunidades para encontrarte con otras personas y mantente conectado con tu pasión.",
+        howKicker: "¿Listo para salir?", howTitle: "Tres pasos. Una nueva carretera.",
+        s1t: "Descarga Passengers", s1p: "Instala la app desde App Store o Google Play y entra en la comunidad.",
+        s2t: "Encuentra tu próxima ruta", s2p: "Descubre personas y oportunidades para compartir tu próxima salida en moto.",
+        s3t: "Sal y comparte", s3p: "Vive la carretera, crea nuevas conexiones y llévate contigo un nuevo recuerdo.",
+        finalTitle: "Tu próxima aventura podría empezar hoy.",
+        finalCopy: "Tanto si eres biker como pasajero, entra en la comunidad, encuentra a tu compañero de viaje y sal a por la próxima ruta.",
+        qrFinalTitle: "Descarga directa con código QR",
+        qrGoogle2: "Escanea y abre ahora la ficha de la app en Google Play.",
+        qrApple2: "Escanea y abre ahora la ficha de la app en App Store.",
+        footer: "© Passengers.app — Bikers y pasajeros, juntos en la carretera.",
+        mobileDownload: "Descarga Passengers"
+      }
+    };
+
+    const languageTargets = {
+      navFeatures: '.navlinks a:nth-child(1)', navHow: '.navlinks a:nth-child(2)', navCommunity: '.navlinks a:nth-child(3)',
+      eyebrow: '.hero .eyebrow', heroH1: '.hero h1', heroCopy: '.hero-copy', qrIntro: '.hero .qr-title',
+      biker: '.micro span:nth-child(1)', passenger: '.micro span:nth-child(2)', rides: '.micro span:nth-child(3)', community: '.micro span:nth-child(4)',
+      roadEyebrow: '.visual-copy .eyebrow', roadTitle: '.visual-copy strong',
+      strip1: '.strip-item:nth-child(1)', strip2: '.strip-item:nth-child(2)', strip3: '.strip-item:nth-child(3)', strip4: '.strip-item:nth-child(4)',
+      featuresKicker: '#funzioni .section-head .kicker', featuresTitle: '#funzioni .section-head h2', featuresCopy: '#funzioni .section-head p',
+      f1t: '#funzioni .feature:nth-child(1) h3', f1p: '#funzioni .feature:nth-child(1) p',
+      f2t: '#funzioni .feature:nth-child(2) h3', f2p: '#funzioni .feature:nth-child(2) p',
+      f3t: '#funzioni .feature:nth-child(3) h3', f3p: '#funzioni .feature:nth-child(3) p',
+      f4t: '#funzioni .feature:nth-child(4) h3', f4p: '#funzioni .feature:nth-child(4) p',
+      howKicker: '#come-funziona .section-head .kicker', howTitle: '#come-funziona .section-head h2',
+      s1t: '#come-funziona .step:nth-child(1) h3', s1p: '#come-funziona .step:nth-child(1) p',
+      s2t: '#come-funziona .step:nth-child(2) h3', s2p: '#come-funziona .step:nth-child(2) p',
+      s3t: '#come-funziona .step:nth-child(3) h3', s3p: '#come-funziona .step:nth-child(3) p',
+      finalTitle: '#community .final-card h2', finalCopy: '#community .final-card > p', qrFinalTitle: '#community .qr-title',
+      footer: 'footer .footer-row > div:first-child', mobileDownload: '.mobile-download'
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang] || translations.it;
+      document.documentElement.lang = lang;
+      document.title = t.title;
+      const desc = document.querySelector('meta[name="description"]');
+      if (desc) desc.setAttribute('content', t.description);
+      Object.entries(languageTargets).forEach(([key, selector]) => {
+        const el = document.querySelector(selector);
+        if (!el || t[key] == null) return;
+        if (key === 'heroH1' || key === 'heroCopy' || key === 'roadTitle') el.innerHTML = t[key];
+        else el.textContent = t[key];
+      });
+      document.querySelectorAll('.store-text small').forEach((el, i) => { el.textContent = (i % 2 === 0) ? t.availableOn : t.downloadOn; });
+      const qrParas = document.querySelectorAll('.qr-card p');
+      if (qrParas[0]) qrParas[0].textContent = t.qrGoogle1;
+      if (qrParas[1]) qrParas[1].textContent = t.qrApple1;
+      if (qrParas[2]) qrParas[2].textContent = t.qrGoogle2;
+      if (qrParas[3]) qrParas[3].textContent = t.qrApple2;
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        const active = btn.dataset.lang === lang;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      document.querySelectorAll('a[href*="apps.apple.com/"]').forEach(a => {
+        a.href = lang === 'es' ? 'https://apps.apple.com/es/app/passengers/id6755344039' : 'https://apps.apple.com/it/app/passengers/id6755344039';
+      });
+      try { localStorage.setItem('passengers-language', lang); } catch(e) {}
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+    let initialLanguage = 'it';
+    try { initialLanguage = localStorage.getItem('passengers-language') || 'it'; } catch(e) {}
+    setLanguage(initialLanguage === 'es' ? 'es' : 'it');
   </script>
 </body>
 </html>
