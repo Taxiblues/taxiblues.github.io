@@ -748,7 +748,14 @@
       const explicit = (url.searchParams.get('lang') || url.searchParams.get('language') || '').toLowerCase();
       if (explicit === 'es' || explicit === 'it') return explicit;
 
-      // Query "nuda": ?ES oppure ?IT
+      // Query "nuda": ?ES oppure ?IT, anche seguita da altri parametri
+      // Esempi: ?ES&fbclid=...   ?ES&utm_source=...   ?IT&foo=bar
+      for (const [key, value] of url.searchParams.entries()) {
+        const k = key.toLowerCase();
+        if ((k === 'es' || k === 'it') && value === '') return k;
+      }
+
+      // Mantiene compatibilità anche con query esattamente ?ES oppure ?IT
       const bareQuery = url.search.replace(/^\?/, '').toLowerCase();
       if (bareQuery === 'es' || bareQuery === 'it') return bareQuery;
 
