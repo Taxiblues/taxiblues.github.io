@@ -733,9 +733,38 @@
     }
 
     document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
-    let initialLanguage = 'it';
-    try { initialLanguage = localStorage.getItem('passengers-language') || 'it'; } catch(e) {}
-    setLanguage(initialLanguage === 'es' ? 'es' : 'it');
+
+    // Lingua iniziale controllata dall'URL.
+    // Formati supportati, ad esempio:
+    //   pagina.html?ES        pagina.html?IT
+    //   pagina.html?lang=ES   pagina.html?lang=IT
+    //   pagina.html#ES        pagina.html#IT
+    //   /ES/                  /IT/
+    // Se nell'URL non è presente ES o IT, il default è sempre italiano.
+    function getLanguageFromUrl() {
+      const url = new URL(window.location.href);
+
+      // Parametri espliciti: ?lang=ES oppure ?language=ES
+      const explicit = (url.searchParams.get('lang') || url.searchParams.get('language') || '').toLowerCase();
+      if (explicit === 'es' || explicit === 'it') return explicit;
+
+      // Query "nuda": ?ES oppure ?IT
+      const bareQuery = url.search.replace(/^\?/, '').toLowerCase();
+      if (bareQuery === 'es' || bareQuery === 'it') return bareQuery;
+
+      // Hash: #ES oppure #IT
+      const hash = url.hash.replace(/^#/, '').toLowerCase();
+      if (hash === 'es' || hash === 'it') return hash;
+
+      // Segmento nel percorso: /ES/ oppure /IT/ (anche come ultimo segmento)
+      const pathSegments = url.pathname.split('/').filter(Boolean).map(s => s.toLowerCase());
+      if (pathSegments.includes('es')) return 'es';
+      if (pathSegments.includes('it')) return 'it';
+
+      return 'it';
+    }
+
+    setLanguage(getLanguageFromUrl());
   </script>
 </body>
 </html>
